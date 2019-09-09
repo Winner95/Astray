@@ -1,0 +1,32 @@
+{
+  "name": "astray-master",
+  "version": "1.0.0",
+  "description": "A WebGL maze game built with Three.js and Box2dWeb. Play it here: http://wwwtyro.github.com/Astray/",
+  "main": "index.html",
+  "dependencies": {
+    "box2dweb": "2.1.0-b",
+    "game-inputs": "0.3.1",
+    "jquery": "3.4.1",
+    "prettier": "1.18.2",
+    "three": "0.108.0",
+    "webpack": "4.39.3"
+  },
+  "devDependencies": {
+    "eslint": "6.3.0",
+    "eslint-config-prettier": "6.2.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "http-server": "0.11.1",
+    "webpack-cli": "3.3.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server",
+    "build": "webpack --mode=development",
+    "prettify": "yarn prettier --write 'src/**/*.js'",
+    "lint": "yarn eslint 'src/**/*.js' --fix",
+    "dev": "yarn build --watch --progress",
+    "watch": "yarn lint && yarn prettify && yarn dev"
+  },
+  "author": "",
+  "license": "ISC"
+}
