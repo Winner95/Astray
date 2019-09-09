@@ -9,18 +9,18 @@
     "jquery": "3.4.1",
     "prettier": "1.18.2",
     "three": "0.108.0",
+    "http-server": "0.11.1",
     "webpack": "4.39.3"
   },
   "devDependencies": {
     "eslint": "6.3.0",
     "eslint-config-prettier": "6.2.0",
     "eslint-plugin-prettier": "3.1.0",
-    "http-server": "0.11.1",
     "webpack-cli": "3.3.8"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server",
+    "start": "http-server ./ -p ${PORT:=5000}",
     "build": "webpack --mode=development",
     "prettify": "yarn prettier --write 'src/**/*.js'",
     "lint": "yarn eslint 'src/**/*.js' --fix",
