@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-const planeTexture = new THREE.TextureLoader().load('/textures/concrete.png');
+const planeTexture = new THREE.TextureLoader().load('/textures/floor.jpg');
 
 planeTexture.minFilter = THREE.LinearFilter;
 planeTexture.wrapS = planeTexture.wrapT = THREE.RepeatWrapping;

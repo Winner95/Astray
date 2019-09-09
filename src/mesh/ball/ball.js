@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-const ironTexture = new THREE.TextureLoader().load('/textures/ball.png');
+const ironTexture = new THREE.TextureLoader().load('/textures/wood.jpg');
 
 ironTexture.minFilter = THREE.LinearFilter;
 

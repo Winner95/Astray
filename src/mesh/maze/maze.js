@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-const brickTexture = new THREE.TextureLoader().load('/textures/brick.png');
+const brickTexture = new THREE.TextureLoader().load('/textures/brick.jpg');
 
 brickTexture.minFilter = THREE.LinearFilter;
 
