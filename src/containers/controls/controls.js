@@ -83,7 +83,35 @@ const controls = {
             },
         };
 
-        new Input(keyEvents, mouseEvents, touchEvents);
+        const voiceEvents = [
+            {
+                bindings: ['toggle-info', 'i'],
+                callback: () => showHint(),
+                upCallback: () => hideHint(),
+            },
+            {
+                bindings: ['left'],
+                callback: () => setKeyAxis([-1, 0]),
+                upCallback: () => setKeyAxis([0, 0]),
+            },
+            {
+                bindings: ['right'],
+                callback: () => setKeyAxis([1, 0]),
+                upCallback: () => setKeyAxis([0, 0]),
+            },
+            {
+                bindings: ['down'],
+                callback: () => setKeyAxis([0, -1]),
+                upCallback: () => setKeyAxis([0, 0]),
+            },
+            {
+                bindings: ['up',],
+                callback: () => setKeyAxis([0, 1]),
+                upCallback: () => setKeyAxis([0, 0]),
+            },
+        ];
+
+        new Input(keyEvents, mouseEvents, touchEvents, voiceEvents);
     },
 };
 

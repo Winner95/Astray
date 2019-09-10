@@ -1,10 +1,12 @@
 const inputs = require('game-inputs')();
+const annyang = require('annyang');
 
 class Input {
-    constructor(keyEvents, mouseEvents, touchEvents) {
+    constructor(keyEvents, mouseEvents, touchEvents, voiceEvents) {
         this.keyboardInit(keyEvents);
         this.mouseInit(mouseEvents);
         this.touchInit(touchEvents);
+        this.voiceInit(voiceEvents);
     }
 
     keyboardInit(keyEvents) {
@@ -55,6 +57,25 @@ class Input {
         document.addEventListener('touchend', touchEndHandler);
     }
 
-};
+    voiceInit(voiceEvents) {
+        // SpeechKITT.vroom();
+        if (annyang) {
+            voiceEvents.forEach(item => {
+                const command = {
+                    [item.bindings[0]]: () => {
+                        item.callback();
+                        // item.upCallback();
+                    },
+                };
+
+                annyang.addCommands(command);
+            });
+            ;
+
+            annyang.start();
+        }
+
+    }
+}
 
 module.exports = Input;
