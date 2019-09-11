@@ -58,13 +58,11 @@ class Input {
     }
 
     voiceInit(voiceEvents) {
-        // SpeechKITT.vroom();
         if (annyang) {
             voiceEvents.forEach(item => {
                 const command = {
                     [item.bindings[0]]: () => {
                         item.callback();
-                        // item.upCallback();
                     },
                 };
 
