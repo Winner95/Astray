@@ -20,7 +20,7 @@ class PhysicsWorld {
     }
 
     createItemFixture(definition, fixture) {
-        return this.world.CreateBody(definition).CreateFixture(fixture);
+        return this.createItemInWorld(definition).CreateFixture(fixture);
     }
 
     update(keyAxis) {
