@@ -1,6 +1,6 @@
 # Astray
 
-A remake of WebGL maze game built with Three.js and Box2dWeb. This version is built withi some javascript modern stack such as yarn, webpack, es6 code style and more. Play it here: https://astray-game.herokuapp.com/
+A remake of WebGL [maze game](https://github.com/wwwtyro/Astray) built with Three.js and Box2dWeb. This version is built withi some javascript modern stack such as yarn, webpack, es6 code style and more. Play it here: https://astray-game.herokuapp.com/
 
 ### Main features
 
