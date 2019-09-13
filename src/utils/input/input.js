@@ -54,7 +54,6 @@ class Input {
         document.addEventListener('touchmove', touchMoveHandler);
         document.addEventListener('touchend', touchEndHandler);
     }
-
-};
+}
 
 module.exports = Input;

@@ -1,11 +1,13 @@
 import jQuery from 'jquery'; // todo: remove
 import * as THREE from 'three';
-import Box2D from 'box2dweb';
+import PhysicsWorld from './containers/physics-world';
 import generateSquareMaze from './utils/maze';
 import Controls from './containers/controls/controls';
 import Ball, { ballRadius } from './mesh/ball/ball';
 import Plane from './mesh/ground/ground';
 import Maze from './mesh/maze/maze';
+
+const physicsWorld = new PhysicsWorld();
 
 let camera = undefined;
 let scene = undefined;
@@ -20,58 +22,9 @@ let ballMesh = null;
 let keyAxis = [0, 0];
 
 let gameState = undefined;
-// Box2D shortcuts
-const B2World = Box2D.Dynamics.b2World;
-const B2FixtureDef = Box2D.Dynamics.b2FixtureDef;
-const B2BodyDef = Box2D.Dynamics.b2BodyDef;
-const b2Body = Box2D.Dynamics.b2Body;
-const B2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
-const B2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
-// const b2Settings = Box2D.Common.b2Settings;
-const B2Vec2 = Box2D.Common.Math.b2Vec2;
-// random variables
-let g;
-let m;
+
 // Box2D world variables
-let wWorld = undefined;
-let wBall = undefined;
 const step = 2;
-
-function createPhysicsWorld() {
-    // Create the world object.
-    wWorld = new B2World(new B2Vec2(0, 0), true);
-
-    // Create the ball.
-    const bodyDef = new B2BodyDef();
-    bodyDef.type = b2Body.b2_dynamicBody;
-    // eslint-disable-next-line
-    bodyDef.position.Set(1, 1);
-    // eslint-disable-next-line
-    wBall = wWorld.CreateBody(bodyDef);
-    const fixDef = new B2FixtureDef();
-    fixDef.density = 1.0;
-    fixDef.friction = 0.0;
-    fixDef.restitution = 0.25;
-    fixDef.shape = new B2CircleShape(ballRadius);
-    // eslint-disable-next-line
-    wBall.CreateFixture(fixDef);
-
-    // Create the maze.
-    bodyDef.type = b2Body.b2_staticBody;
-    fixDef.shape = new B2PolygonShape();
-    // eslint-disable-next-line
-    fixDef.shape.SetAsBox(0.5, 0.5);
-    for (let i = 0; i < maze.dimension; i++) {
-        for (let j = 0; j < maze.dimension; j++) {
-            if (maze[i][j]) {
-                bodyDef.position.x = i;
-                bodyDef.position.y = j;
-                // eslint-disable-next-line
-                wWorld.CreateBody(bodyDef).CreateFixture(fixDef);
-            }
-        }
-    }
-}
 
 function createRenderWorld() {
     // Create the scene object.
@@ -104,28 +57,10 @@ function createRenderWorld() {
     scene.add(light);
 }
 
-function updatePhysicsWorld() {
-    // Apply "friction".
-    // eslint-disable-next-line
-    const lv = wBall.GetLinearVelocity();
-    lv.Multiply(0.95);
-    wBall.SetLinearVelocity(lv);
-
-    // Apply user-directed force.
-    const force = new B2Vec2(
-        keyAxis[0] * wBall.GetMass() * 0.25,
-        keyAxis[1] * wBall.GetMass() * 0.25
-    );
-    wBall.ApplyImpulse(force, wBall.GetPosition());
-
-    // Take a time step.
-    wWorld.Step(1 / 60, 8, 3);
-}
-
 function updateRenderWorld() {
     // Update ball position.
-    const stepX = wBall.GetPosition().x - ballMesh.position.x;
-    const stepY = wBall.GetPosition().y - ballMesh.position.y;
+    const stepX = physicsWorld.getPlayer().GetPosition().x - ballMesh.position.x;
+    const stepY = physicsWorld.getPlayer().GetPosition().y - ballMesh.position.y;
     ballMesh.position.x += stepX;
     ballMesh.position.y += stepY;
 
@@ -154,7 +89,7 @@ function gameLoop() {
         case 'initialize':
             maze = generateSquareMaze(mazeDimension);
             maze[mazeDimension - 1][mazeDimension - 2] = false;
-            createPhysicsWorld();
+            physicsWorld.init(maze);
             createRenderWorld();
             camera.position.set(1, 1, 5);
             light.position.set(1, 1, 1.3);
@@ -174,7 +109,7 @@ function gameLoop() {
             break;
 
         case 'play':
-            updatePhysicsWorld();
+            physicsWorld.update(keyAxis);
             updateRenderWorld();
             renderer.render(scene, camera);
 
@@ -188,7 +123,7 @@ function gameLoop() {
             break;
 
         case 'fade out':
-            updatePhysicsWorld();
+            PhysicsWorld.update(keyAxis);
             updateRenderWorld();
             light.intensity += 0.1 * (0.0 - light.intensity);
             renderer.render(scene, camera);
@@ -262,6 +197,8 @@ jQuery(document).ready(function() {
     // Prepare the instructions.
     jQuery('#instructions').center();
     hideHint();
+
+    //
 
     // Create the renderer.
     renderer = new THREE.WebGLRenderer();
