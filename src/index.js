@@ -7,7 +7,7 @@ import Ball, { ballRadius } from './mesh/ball/ball';
 import Plane from './mesh/ground/ground';
 import Maze from './mesh/maze/maze';
 
-const physicsWorld = new PhysicsWorld();
+let physicsWorld;
 
 let camera = undefined;
 let scene = undefined;
@@ -89,7 +89,7 @@ function gameLoop() {
         case 'initialize':
             maze = generateSquareMaze(mazeDimension);
             maze[mazeDimension - 1][mazeDimension - 2] = false;
-            physicsWorld.init(maze);
+            physicsWorld = new PhysicsWorld(maze);
             createRenderWorld();
             camera.position.set(1, 1, 5);
             light.position.set(1, 1, 1.3);
