@@ -24,24 +24,15 @@ class PhysicsWorld {
     }
 
     update(keyAxis) {
-        // eslint-disable-next-line
-        let lv = this.player.GetLinearVelocity();
-        lv.Multiply(0.95);
-        this.player.SetLinearVelocity(lv);
-
-        // Apply user-directed force.
-        const force = new B2Vec2(
-            keyAxis[0] * this.player.GetMass() * 0.25,
-            keyAxis[1] * this.player.GetMass() * 0.25
-        );
-        this.player.ApplyImpulse(force, this.player.GetPosition());
+        this.player.setVelocity();
+        this.player.applyBoost(keyAxis);
 
         // Take a time step.
         this.world.Step(1 / 60, 8, 3);
     }
 
-    getPlayer() {
-        return this.player;
+    getPlayerShape() {
+        return this.player.getShape();
     }
 }
 

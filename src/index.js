@@ -59,8 +59,8 @@ function createRenderWorld() {
 
 function updateRenderWorld() {
     // Update ball position.
-    const stepX = physicsWorld.getPlayer().GetPosition().x - ballMesh.position.x;
-    const stepY = physicsWorld.getPlayer().GetPosition().y - ballMesh.position.y;
+    const stepX = physicsWorld.getPlayerShape().GetPosition().x - ballMesh.position.x;
+    const stepY = physicsWorld.getPlayerShape().GetPosition().y - ballMesh.position.y;
     ballMesh.position.x += stepX;
     ballMesh.position.y += stepY;
 
