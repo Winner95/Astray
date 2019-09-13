@@ -123,7 +123,7 @@ function gameLoop() {
             break;
 
         case 'fade out':
-            PhysicsWorld.update(keyAxis);
+            physicsWorld.update(keyAxis);
             updateRenderWorld();
             light.intensity += 0.1 * (0.0 - light.intensity);
             renderer.render(scene, camera);

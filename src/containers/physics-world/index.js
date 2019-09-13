@@ -5,8 +5,6 @@ import Maze from '../maze';
 const B2World = Box2D.Dynamics.b2World;
 const B2Vec2 = Box2D.Common.Math.b2Vec2;
 
-let lv = null;
-
 class PhysicsWorld {
     constructor(maze) {
         this.createItemFixture = this.createItemFixture.bind(this);
@@ -27,7 +25,7 @@ class PhysicsWorld {
 
     update(keyAxis) {
         // eslint-disable-next-line
-        lv = this.player.GetLinearVelocity();
+        let lv = this.player.GetLinearVelocity();
         lv.Multiply(0.95);
         this.player.SetLinearVelocity(lv);
 
