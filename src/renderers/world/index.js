@@ -106,13 +106,12 @@ class RendersWorld {
     }
 
     setNewLevelSize() {
-        this.mazeDimension = this.maze.dimension += 2;;
+        this.mazeDimension = this.maze.dimension += 2;
     }
 
     getNewLeveSize() {
         return this.mazeDimension;
     }
-
 
     addLightIntensity() {
         this.light.intensity += 0.1 * (1.0 - this.light.intensity);
