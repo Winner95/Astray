@@ -1,6 +1,10 @@
 const path = require('path');
+const { BundleStatsWebpackPlugin } = require('bundle-stats');
 
 module.exports = {
+    plugins: [
+        new BundleStatsWebpackPlugin()
+    ],
     resolve: {
         alias: {
             physics: path.resolve(__dirname, "src/physics"),

@@ -6,13 +6,14 @@
   "dependencies": {
     "box2dweb": "2.1.0-b",
     "game-inputs": "0.3.1",
+    "http-server": "0.11.1",
     "jquery": "3.4.1",
     "prettier": "1.18.2",
     "three": "0.108.0",
-    "http-server": "0.11.1",
     "webpack": "4.39.3"
   },
   "devDependencies": {
+    "bundle-stats": "^1.8.1",
     "eslint": "6.3.0",
     "eslint-config-prettier": "6.2.0",
     "eslint-plugin-prettier": "3.1.0",
