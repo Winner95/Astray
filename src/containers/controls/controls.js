@@ -1,5 +1,5 @@
-import Input from '../../utils/input/input';
-import { setRoundedValue } from '../../utils/math/math';
+import Input from 'utils/input/input';
+import { setRoundedValue } from 'utils/math/math';
 
 const controls = {
     init: (onMoveKey, hideHint, showHint, setKeyAxis) => {
