@@ -10,14 +10,15 @@ let physicsWorld;
 let rendersWorld;
 
 let maze = undefined;
-let mazeDimension = 11;
 
 let keyAxis = [0, 0];
 
 let gameState = undefined;
 
-// Box2D world variables
+// world options
 const step = 2;
+let mazeDimension = 11;
+
 
 function gameLoop() {
     switch (gameState) {
