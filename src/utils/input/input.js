@@ -1,5 +1,6 @@
-const inputs = require('game-inputs')();
+import GameInputs from 'game-inputs';
 
+const inputs = new GameInputs(); // new Inputs();
 class Input {
     constructor(keyEvents, mouseEvents, touchEvents) {
         this.keyboardInit(keyEvents);
@@ -56,4 +57,4 @@ class Input {
     }
 }
 
-module.exports = Input;
+export default Input;
