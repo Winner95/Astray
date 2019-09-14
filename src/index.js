@@ -1,7 +1,7 @@
 import jQuery from 'jquery'; // todo: remove
 
 import PhysicsWorld from 'physics/world';
-import RendersWorld from './containers/renders-world';
+import RendersWorld from 'renderers/world';
 
 import generateSquareMaze from './utils/maze';
 import Controls from 'controls/controls';
