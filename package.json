@@ -21,8 +21,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server ./ -p ${PORT:=5000}",
-    "build": "webpack --mode=development --config webpack.config.js",
-    "build-prod": "webpack --mode=production",
+    "build": "webpack --mode=production --config webpack.config.js",
+    "build-dev": "webpack --mode=production",
     "prettify": "yarn prettier --write 'src/**/*.js'",
     "lint": "yarn eslint 'src/**/*.js' --fix",
     "dev": "yarn build --watch --progress",
