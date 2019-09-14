@@ -4,7 +4,7 @@ import PhysicsWorld from 'physics/world';
 import RendersWorld from './containers/renders-world';
 
 import generateSquareMaze from './utils/maze';
-import Controls from './containers/controls/controls';
+import Controls from 'controls/controls';
 
 let physicsWorld;
 let rendersWorld;
