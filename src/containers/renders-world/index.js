@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
-import Ball, { ballRadius } from '../../mesh/ball/ball';
-import Plane from '../../mesh/ground/ground';
-import Maze from '../../mesh/maze/maze';
+import Ball, { ballRadius } from 'mesh/ball/ball';
+import Plane from 'mesh/ground/ground';
+import Maze from 'mesh/maze/maze';
 
 const abs = Math.abs;
 

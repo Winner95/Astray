@@ -1,7 +1,7 @@
 import Box2D from 'box2dweb';
 
 import Body from 'physics/body';
-import { ballRadius } from '../../mesh/ball/ball';
+import { ballRadius } from 'mesh/ball/ball';
 
 const B2FixtureDef = Box2D.Dynamics.b2FixtureDef;
 const B2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
