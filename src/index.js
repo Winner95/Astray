@@ -30,6 +30,7 @@ function gameLoop() {
             rendersWorld.init(maze);
 
             const level = Math.floor((mazeDimension - 1) / 2 - 4);
+
             jQuery('#level').html('Level ' + level);
 
             gameState = 'fade in';
@@ -55,6 +56,8 @@ function gameLoop() {
             rendersWorld.render();
 
             if (rendersWorld.checkVictory()) {
+                mazeDimension = rendersWorld.getNewLeveSize();
+
                 gameState = 'fade out';
             }
 
