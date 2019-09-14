@@ -1,16 +1,16 @@
-import * as THREE from 'three';
+import { TextureLoader, LinearFilter, SphereGeometry, MeshPhongMaterial, Mesh } from 'three';
 
-const ironTexture = new THREE.TextureLoader().load('/textures/wood.jpg');
+const ironTexture = new TextureLoader().load('/textures/wood.jpg');
 
-ironTexture.minFilter = THREE.LinearFilter;
+ironTexture.minFilter = LinearFilter;
 
 export const ballRadius = 0.25;
 
 const Ball = {
     init() {
-        const g = new THREE.SphereGeometry(ballRadius, 32, 16);
-        const m = new THREE.MeshPhongMaterial({ map: ironTexture });
-        const ballMesh = new THREE.Mesh(g, m);
+        const g = new SphereGeometry(ballRadius, 32, 16);
+        const m = new MeshPhongMaterial({ map: ironTexture });
+        const ballMesh = new Mesh(g, m);
 
         ballMesh.position.set(1, 1, ballRadius);
 

@@ -1,8 +1,15 @@
-import * as THREE from 'three';
+import {
+    TextureLoader,
+    LinearFilter,
+    Geometry,
+    CubeGeometry,
+    Mesh,
+    MeshPhongMaterial,
+} from 'three';
 
-const brickTexture = new THREE.TextureLoader().load('/textures/brick.jpg');
+const brickTexture = new TextureLoader().load('/textures/brick.jpg');
 
-brickTexture.minFilter = THREE.LinearFilter;
+brickTexture.minFilter = LinearFilter;
 
 const Maze = {
     init(maze) {
@@ -10,13 +17,13 @@ const Maze = {
     },
 
     generateMazeMesh(field) {
-        const dummy = new THREE.Geometry();
+        const dummy = new Geometry();
 
         for (let i = 0; i < field.dimension; i++) {
             for (let j = 0; j < field.dimension; j++) {
                 if (field[i][j]) {
-                    const geometry = new THREE.CubeGeometry(1, 1, 1, 1, 1, 1);
-                    const mesh = new THREE.Mesh(geometry);
+                    const geometry = new CubeGeometry(1, 1, 1, 1, 1, 1);
+                    const mesh = new Mesh(geometry);
                     mesh.position.x = i;
                     mesh.position.y = j;
                     mesh.position.z = 0.5;
@@ -26,8 +33,8 @@ const Maze = {
                 }
             }
         }
-        const material = new THREE.MeshPhongMaterial({ map: brickTexture });
-        const mesh = new THREE.Mesh(dummy, material);
+        const material = new MeshPhongMaterial({ map: brickTexture });
+        const mesh = new Mesh(dummy, material);
 
         return mesh;
     },

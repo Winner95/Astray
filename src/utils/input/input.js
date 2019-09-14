@@ -1,6 +1,7 @@
 import GameInputs from 'game-inputs';
 
-const inputs = new GameInputs(); // new Inputs();
+const inputs = new GameInputs();
+
 class Input {
     constructor(keyEvents, mouseEvents, touchEvents) {
         this.keyboardInit(keyEvents);

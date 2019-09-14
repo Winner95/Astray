@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import { WebGLRenderer, Scene, PerspectiveCamera, PointLight, Matrix4, Vector3 } from 'three';
 
 import Ball, { ballRadius } from 'mesh/ball/ball';
 import Plane from 'mesh/ground/ground';
@@ -8,7 +8,7 @@ const abs = Math.abs;
 
 class RendersWorld {
     constructor() {
-        this.renderer = new THREE.WebGLRenderer();
+        this.renderer = new WebGLRenderer();
         this.aspect = window.innerWidth / window.innerHeight;
 
         this.setRenderSize();
@@ -16,7 +16,7 @@ class RendersWorld {
 
     init(maze) {
         this.maze = maze;
-        this.scene = new THREE.Scene();
+        this.scene = new Scene();
 
         this.ballMesh = Ball.init();
         this.scene.add(this.ballMesh);
@@ -27,11 +27,11 @@ class RendersWorld {
         const planeMesh = Plane.init(this.maze.dimension);
         this.scene.add(planeMesh);
 
-        this.camera = new THREE.PerspectiveCamera(60, this.aspect, 1, 1000);
+        this.camera = new PerspectiveCamera(60, this.aspect, 1, 1000);
         this.camera.position.set(1, 1, 5);
         this.scene.add(this.camera);
 
-        this.light = new THREE.PointLight(0xffffff, 1);
+        this.light = new PointLight(0xffffff, 1);
         this.light.position.set(1, 1, 1.3);
         this.scene.add(this.light);
 
@@ -50,15 +50,15 @@ class RendersWorld {
         this.ballMesh.position.y += stepY;
 
         // Update ball rotation.
-        let tempMat = new THREE.Matrix4();
+        let tempMat = new Matrix4();
 
-        tempMat.makeRotationAxis(new THREE.Vector3(0, 1, 0), stepX / ballRadius);
+        tempMat.makeRotationAxis(new Vector3(0, 1, 0), stepX / ballRadius);
         tempMat.multiply(this.ballMesh.matrix);
 
         this.ballMesh.matrix = tempMat;
 
-        tempMat = new THREE.Matrix4();
-        tempMat.makeRotationAxis(new THREE.Vector3(1, 0, 0), -stepY / ballRadius);
+        tempMat = new Matrix4();
+        tempMat.makeRotationAxis(new Vector3(1, 0, 0), -stepY / ballRadius);
         tempMat.multiply(this.ballMesh.matrix);
 
         this.ballMesh.matrix = tempMat;
