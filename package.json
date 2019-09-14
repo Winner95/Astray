@@ -29,5 +29,5 @@
     "watch": "yarn lint && yarn prettify && yarn dev"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
