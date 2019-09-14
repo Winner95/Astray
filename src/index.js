@@ -1,6 +1,8 @@
 import jQuery from 'jquery'; // todo: remove
 import * as THREE from 'three';
 import PhysicsWorld from './containers/physics-world';
+import RendersWorld from './containers/renders-world';
+
 import generateSquareMaze from './utils/maze';
 import Controls from './containers/controls/controls';
 import Ball, { ballRadius } from './mesh/ball/ball';
@@ -8,10 +10,10 @@ import Plane from './mesh/ground/ground';
 import Maze from './mesh/maze/maze';
 
 let physicsWorld;
+let rendersWorld;
 
 let camera = undefined;
 let scene = undefined;
-let renderer = undefined;
 let light = undefined;
 let maze = undefined;
 let mazeMesh = undefined;
@@ -89,19 +91,27 @@ function gameLoop() {
         case 'initialize':
             maze = generateSquareMaze(mazeDimension);
             maze[mazeDimension - 1][mazeDimension - 2] = false;
+
             physicsWorld = new PhysicsWorld(maze);
+
             createRenderWorld();
+
             camera.position.set(1, 1, 5);
             light.position.set(1, 1, 1.3);
+
             light.intensity = 0;
+
             const level = Math.floor((mazeDimension - 1) / 2 - 4);
             jQuery('#level').html('Level ' + level);
+
             gameState = 'fade in';
             break;
 
         case 'fade in':
             light.intensity += 0.1 * (1.0 - light.intensity);
-            renderer.render(scene, camera);
+
+            rendersWorld.renderer.render(scene, camera);
+
             if (Math.abs(light.intensity - 1.0) < 0.05) {
                 light.intensity = 1.0;
                 gameState = 'play';
@@ -110,8 +120,10 @@ function gameLoop() {
 
         case 'play':
             physicsWorld.update(keyAxis);
+
             updateRenderWorld();
-            renderer.render(scene, camera);
+
+            rendersWorld.renderer.render(scene, camera);
 
             // Check for victory.
             const mazeX = Math.floor(ballMesh.position.x + 0.5);
@@ -124,12 +136,17 @@ function gameLoop() {
 
         case 'fade out':
             physicsWorld.update(keyAxis);
+
             updateRenderWorld();
+
             light.intensity += 0.1 * (0.0 - light.intensity);
-            renderer.render(scene, camera);
+
+            rendersWorld.renderer.render(scene, camera);
+
             if (Math.abs(light.intensity - 0.0) < 0.1) {
                 light.intensity = 0.0;
-                renderer.render(scene, camera);
+                rendersWorld.renderer.render(scene, camera);
+
                 gameState = 'initialize';
             }
             break;
@@ -139,7 +156,7 @@ function gameLoop() {
 }
 
 function onResize() {
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    rendersWorld.setRenderSize();
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 }
@@ -198,13 +215,9 @@ jQuery(document).ready(function() {
     jQuery('#instructions').center();
     hideHint();
 
+    rendersWorld = new RendersWorld();
     //
-
-    // Create the renderer.
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    // todo: add styles to it
-    document.body.appendChild(renderer.domElement);
+    document.body.appendChild(rendersWorld.getDomElement());
 
     const setKeyAxis = value => (keyAxis = value);
 
