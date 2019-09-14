@@ -9,8 +9,7 @@ const abs = Math.abs;
 class RendersWorld {
     constructor() {
         this.renderer = new WebGLRenderer();
-        this.aspect = window.innerWidth / window.innerHeight;
-
+        this.setAspectRatio();
         this.setRenderSize();
     }
 
@@ -127,8 +126,13 @@ class RendersWorld {
     }
 
     setCameraSize() {
+        this.setAspectRatio();
         this.camera.aspect = this.aspect;
         this.camera.updateProjectionMatrix();
+    }
+
+    setAspectRatio() {
+        this.aspect = window.innerWidth / window.innerHeight;
     }
 
     getDomElement() {
