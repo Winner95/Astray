@@ -1,5 +1,6 @@
 import Box2D from 'box2dweb';
-import Body from '../body';
+
+import Body from 'physics/body';
 
 const B2FixtureDef = Box2D.Dynamics.b2FixtureDef;
 const b2Body = Box2D.Dynamics.b2Body;

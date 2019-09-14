@@ -1,6 +1,7 @@
 import Box2D from 'box2dweb';
-import Player from '../player';
-import Maze from '../maze';
+
+import Player from 'physics/player';
+import Maze from 'physics/maze';
 
 const B2World = Box2D.Dynamics.b2World;
 const B2Vec2 = Box2D.Common.Math.b2Vec2;
