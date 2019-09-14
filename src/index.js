@@ -1,6 +1,6 @@
 import jQuery from 'jquery'; // todo: remove
 
-import PhysicsWorld from './containers/physics-world';
+import PhysicsWorld from './physics/world';
 import RendersWorld from './containers/renders-world';
 
 import generateSquareMaze from './utils/maze';
@@ -18,7 +18,6 @@ let gameState = undefined;
 // world options
 const step = 2;
 let mazeDimension = 11;
-
 
 function gameLoop() {
     switch (gameState) {
@@ -55,7 +54,7 @@ function gameLoop() {
             rendersWorld.update(physicsWorld);
             rendersWorld.render();
 
-            if(rendersWorld.checkVictory()) {
+            if (rendersWorld.checkVictory()) {
                 gameState = 'fade out';
             }
 
@@ -68,7 +67,7 @@ function gameLoop() {
             rendersWorld.removeLightIntensity();
             rendersWorld.render();
 
-            if(rendersWorld.isReset(true)) {
+            if (rendersWorld.isReset(true)) {
                 gameState = 'initialize';
             }
 

@@ -77,7 +77,7 @@ class RendersWorld {
         const mazeX = Math.floor(this.ballMesh.position.x + 0.5);
         const mazeY = Math.floor(this.ballMesh.position.y + 0.5);
         const condition = mazeX == this.maze.dimension && mazeY == this.maze.dimension - 2;
-        
+
         if (condition) {
             this.maze.dimension += 2;
         }
@@ -134,7 +134,6 @@ class RendersWorld {
     getDomElement() {
         return this.renderer.domElement;
     }
-
 }
 
 export default RendersWorld;

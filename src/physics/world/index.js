@@ -5,7 +5,7 @@ import Maze from '../maze';
 const B2World = Box2D.Dynamics.b2World;
 const B2Vec2 = Box2D.Common.Math.b2Vec2;
 
-class PhysicsWorld {
+class World {
     constructor(maze) {
         this.createItemFixture = this.createItemFixture.bind(this);
         this.createItemInWorld = this.createItemInWorld.bind(this);
@@ -36,4 +36,4 @@ class PhysicsWorld {
     }
 }
 
-export default PhysicsWorld;
+export default World;
