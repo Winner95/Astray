@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
+
+const trackingID = process.env.googleID ? process.env.googleID : 'your-tracking-app-ID';
 // for analysis only
 // const { BundleStatsWebpackPlugin } = require('bundle-stats');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -13,7 +15,7 @@ module.exports = {
         new HtmlReplaceWebpackPlugin([
             {
               pattern: 'your-tracking-app-ID',
-              replacement: process.env.googleID
+              replacement: trackingID
             },
 
         ]),
