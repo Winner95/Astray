@@ -1,5 +1,3 @@
-import jQuery from 'jquery'; // todo: remove
-
 import PhysicsWorld from 'physics/world';
 import RendersWorld from 'renderers/world';
 
@@ -31,7 +29,7 @@ function gameLoop() {
 
             const level = Math.floor((mazeDimension - 1) / 2 - 4);
 
-            jQuery('#level').html('Level ' + level);
+            document.querySelector('#level').innerHTML = 'Level ' + level;
 
             gameState = 'fade in';
 
@@ -104,39 +102,46 @@ function onMoveKey(event) {
     }
 }
 
-jQuery.fn.centerv = function() {
+function centerv(el) {
     const wh = window.innerHeight;
-    const h = this.outerHeight();
-    this.css('position', 'absolute');
-    this.css('top', Math.max(0, (wh - h) / 2) + 'px');
-    return this;
-};
+    const h = el.offsetHeight;
 
-jQuery.fn.centerh = function() {
+    el.style.position = 'absolute';
+    el.style.top = Math.max(0, (wh - h) / 2) + 'px';
+}
+
+function centerh(el) {
     const ww = window.innerWidth;
-    const w = this.outerWidth();
-    this.css('position', 'absolute');
-    this.css('left', Math.max(0, (ww - w) / 2) + 'px');
-    return this;
-};
+    const w = el.offsetWidth;
 
-jQuery.fn.center = function() {
-    this.centerv();
-    this.centerh();
-    return this;
-};
+    el.style.position = 'absolute';
+    el.style.left = Math.max(0, (ww - w) / 2) + 'px';
+}
+
+function center(el) {
+    centerv(el);
+    centerh(el);
+}
 
 function showHint() {
-    jQuery('#instructions').show();
+    document.querySelector('#instructions').style.display = 'block';
 }
 
 function hideHint() {
-    jQuery('#instructions').hide();
+    document.querySelector('#instructions').style.display = 'none';
 }
 
-jQuery(document).ready(function() {
+function documentReady(fn) {
+    if (document.readyState != 'loading') {
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
+documentReady(function() {
     // Prepare the instructions.
-    jQuery('#instructions').center();
+    center(document.querySelector('#instructions'));
     hideHint();
 
     rendersWorld = new RendersWorld();
@@ -150,7 +155,7 @@ jQuery(document).ready(function() {
     // gamepad events
     // todo: make it
 
-    jQuery(window).resize(onResize);
+    window.addEventListener('resize', onResize);
 
     // Set the initial game state.
     gameState = 'initialize';
