@@ -10,7 +10,7 @@ const controls = {
                 upCallback: () => hideHint(),
             },
             {
-                bindings: ['move-left', 'A', '<left>'],
+                bindings: ['move-left', 'A', 'H', '<left>'],
                 callback: event => {
                     event.keyAxis = [-step, 0];
                     onMoveKey(event);
@@ -18,7 +18,7 @@ const controls = {
                 upCallback: event => onMoveKey(event),
             },
             {
-                bindings: ['move-right', 'D', '<right>'],
+                bindings: ['move-right', 'D', 'L', '<right>'],
                 callback: event => {
                     event.keyAxis = [step, 0];
                     onMoveKey(event);
@@ -26,7 +26,7 @@ const controls = {
                 upCallback: event => onMoveKey(event),
             },
             {
-                bindings: ['move-down', 'S', '<down>'],
+                bindings: ['move-down', 'S', 'K', '<down>'],
                 callback: event => {
                     event.keyAxis = [0, -step];
                     onMoveKey(event);
@@ -34,7 +34,7 @@ const controls = {
                 upCallback: event => onMoveKey(event),
             },
             {
-                bindings: ['move-up', 'W', '<up>'],
+                bindings: ['move-up', 'W', 'J', '<up>'],
                 callback: event => {
                     event.keyAxis = [0, step];
                     onMoveKey(event);
