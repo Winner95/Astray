@@ -2,7 +2,7 @@ import Input from 'utils/input/input';
 import { setRoundedValue } from 'utils/math/math';
 
 const controls = {
-    init: (onMoveKey, hideHint, showHint, setKeyAxis) => {
+    init: (onMoveKey, hideHint, showHint, setKeyAxis, step) => {
         const keyEvents = [
             {
                 bindings: ['toggle-info', 'I'],
@@ -11,22 +11,34 @@ const controls = {
             },
             {
                 bindings: ['move-left', 'A', '<left>'],
-                callback: event => onMoveKey(event),
+                callback: event => {
+                    event.keyAxis = [-step, 0];
+                    onMoveKey(event);
+                },
                 upCallback: event => onMoveKey(event),
             },
             {
                 bindings: ['move-right', 'D', '<right>'],
-                callback: event => onMoveKey(event),
+                callback: event => {
+                    event.keyAxis = [step, 0];
+                    onMoveKey(event);
+                },
                 upCallback: event => onMoveKey(event),
             },
             {
                 bindings: ['move-down', 'S', '<down>'],
-                callback: event => onMoveKey(event),
+                callback: event => {
+                    event.keyAxis = [0, -step];
+                    onMoveKey(event);
+                },
                 upCallback: event => onMoveKey(event),
             },
             {
                 bindings: ['move-up', 'W', '<up>'],
-                callback: event => onMoveKey(event),
+                callback: event => {
+                    event.keyAxis = [0, step];
+                    onMoveKey(event);
+                },
                 upCallback: event => onMoveKey(event),
             },
         ];

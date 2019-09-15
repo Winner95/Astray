@@ -90,18 +90,10 @@ function onMoveKey(event) {
         return;
     }
 
-    if (event.keyCode == 39) {
-        keyAxis = [step, 0];
-    } else if (event.keyCode == 37) {
-        keyAxis = [-step, 0];
-    }
-    if (event.keyCode == 40) {
-        keyAxis = [0, -step];
-    } else if (event.keyCode == 38) {
-        keyAxis = [0, step];
+    if (event.type === 'keydown') {
+        keyAxis = event.keyAxis ? event.keyAxis : [0, 0];
     }
 }
-
 
 function showHint() {
     document.querySelector('#instructions').style.display = 'block';
@@ -126,7 +118,7 @@ documentReady(function() {
 
     const setKeyAxis = value => (keyAxis = value);
 
-    Controls.init(onMoveKey, hideHint, showHint, setKeyAxis);
+    Controls.init(onMoveKey, hideHint, showHint, setKeyAxis, step);
 
     // gamepad events
     // todo: make it
