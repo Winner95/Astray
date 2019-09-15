@@ -25,7 +25,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "analyse": "yarn bundle-stats --baseline ./dist/report.html",
-    "start": "http-server ./ -p ${PORT:=5000}",
+    "start": "http-server ./ -p ${PORT:=5000} -g",
     "build": "webpack --mode=production --config webpack.config.js",
     "build-dev": "webpack --mode=development --progress",
     "prettify": "yarn prettier --write 'src/**/*.js'",
