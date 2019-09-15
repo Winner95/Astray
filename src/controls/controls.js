@@ -5,7 +5,7 @@ const controls = {
     init: (onMoveKey, hideHint, showHint, setKeyAxis) => {
         const keyEvents = [
             {
-                bindings: ['toggle-info', 'i'],
+                bindings: ['toggle-info', 'I'],
                 callback: () => showHint(),
                 upCallback: () => hideHint(),
             },

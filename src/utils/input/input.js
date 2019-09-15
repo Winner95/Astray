@@ -11,7 +11,7 @@ class Input {
 
     keyboardInit(keyEvents) {
         keyEvents.forEach(item => {
-            inputs.bind(...item.bindings);
+            inputs.bind.apply( inputs, item.bindings );
 
             inputs.down.on(item.bindings[0], () => {
                 item.callback(event);
