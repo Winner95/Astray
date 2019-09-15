@@ -20,16 +20,13 @@ let mazeDimension = 11;
 function gameLoop() {
     switch (gameState) {
         case 'initialize':
-            maze = generateSquareMaze(mazeDimension);
-            maze[mazeDimension - 1][mazeDimension - 2] = false;
+            maze = getMaze(mazeDimension);
 
             physicsWorld = new PhysicsWorld(maze);
 
             rendersWorld.init(maze);
 
-            const level = Math.floor((mazeDimension - 1) / 2 - 4);
-
-            document.querySelector('#level').innerHTML = 'Level ' + level;
+            showLevel(mazeDimension);
 
             gameState = 'fade in';
 
@@ -101,6 +98,20 @@ function showHint() {
 
 function hideHint() {
     document.querySelector('#instructions').style.display = 'none';
+}
+
+function showLevel(mazeDimension) {
+    const level = Math.floor((mazeDimension - 1) / 2 - 4);
+
+    document.querySelector('#level').innerHTML = 'Level ' + level;
+}
+
+function getMaze(mazeDimension) {
+    const maze = generateSquareMaze(mazeDimension);
+
+    maze[mazeDimension - 1][mazeDimension - 2] = false;
+
+    return maze;
 }
 
 function documentReady(fn) {
