@@ -102,26 +102,6 @@ function onMoveKey(event) {
     }
 }
 
-function centerv(el) {
-    const wh = window.innerHeight;
-    const h = el.offsetHeight;
-
-    el.style.position = 'absolute';
-    el.style.top = Math.max(0, (wh - h) / 2) + 'px';
-}
-
-function centerh(el) {
-    const ww = window.innerWidth;
-    const w = el.offsetWidth;
-
-    el.style.position = 'absolute';
-    el.style.left = Math.max(0, (ww - w) / 2) + 'px';
-}
-
-function center(el) {
-    centerv(el);
-    centerh(el);
-}
 
 function showHint() {
     document.querySelector('#instructions').style.display = 'block';
@@ -140,10 +120,6 @@ function documentReady(fn) {
 }
 
 documentReady(function() {
-    // Prepare the instructions.
-    center(document.querySelector('#instructions'));
-    hideHint();
-
     rendersWorld = new RendersWorld();
     //
     document.body.appendChild(rendersWorld.getDomElement());
