@@ -1,9 +1,16 @@
 const path = require('path');
 const { BundleStatsWebpackPlugin } = require('bundle-stats');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
     plugins: [
-        new BundleStatsWebpackPlugin()
+        new CompressionPlugin(),
+        new BundleStatsWebpackPlugin(),
+        new BundleAnalyzerPlugin({
+            generateStatsFile: true,
+        }),
     ],
     resolve: {
         alias: {
