@@ -1,0 +1,16 @@
+{
+    "short_name": "Astray",
+    "name": "Maze astray",
+    "icons": [
+      {
+        "src": "/textures/brick.jpg",
+        "type": "image/jpg",
+        "sizes": "600x600"
+      }
+    ],
+    "start_url": "https://astray-game.herokuapp.com/",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000"
+}
