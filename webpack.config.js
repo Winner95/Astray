@@ -27,10 +27,11 @@ module.exports = {
     ],
     resolve: {
         alias: {
+            controls: path.resolve(__dirname, "src/controls"),
+            mesh: path.resolve(__dirname, "src/mesh"),
             physics: path.resolve(__dirname, "src/physics"),
             renderers: path.resolve(__dirname, "src/renderers"),
-            mesh: path.resolve(__dirname, "src/mesh"),
-            controls: path.resolve(__dirname, "src/controls"),
+            storage: path.resolve(__dirname, "src/storage"),
             utils: path.resolve(__dirname, "src/utils"),
         }
     }

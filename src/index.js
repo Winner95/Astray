@@ -1,5 +1,6 @@
 import PhysicsWorld from 'physics/world';
 import RendersWorld from 'renderers/world';
+import Storage from 'storage/storage';
 
 import generateSquareMaze from './utils/maze';
 import Controls from 'controls/controls';
@@ -13,6 +14,8 @@ let keyAxis = [0, 0];
 
 let gameState = undefined;
 
+const store = new Storage('astray-maze-list');
+
 // world options
 const step = 2;
 let mazeDimension = 11;
@@ -25,6 +28,8 @@ function gameLoop() {
             physicsWorld = new PhysicsWorld(maze);
 
             rendersWorld.init(maze);
+
+            store.saveLevel(maze);
 
             showLevel(mazeDimension);
 
