@@ -6,7 +6,10 @@ class Input {
     constructor(keyEvents, mouseEvents, touchEvents) {
         this.keyboardInit(keyEvents);
         this.mouseInit(mouseEvents);
-        this.touchInit(touchEvents);
+
+        if('ontouchstart' in document.documentElement) {
+            this.touchInit(touchEvents);
+        }
     }
 
     keyboardInit(keyEvents) {
