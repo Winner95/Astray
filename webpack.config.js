@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 const trackingID = process.env.googleID ? process.env.googleID : 'your-tracking-app-ID';
 // for analysis only
@@ -24,6 +25,7 @@ module.exports = {
         // new BundleAnalyzerPlugin({
         //     generateStatsFile: true,
         // }),
+        new OfflinePlugin(),
     ],
     resolve: {
         alias: {

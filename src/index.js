@@ -5,6 +5,13 @@ import Storage from 'storage/storage';
 import generateSquareMaze from './utils/maze';
 import Controls from 'controls/controls';
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+
+OfflinePluginRuntime.install({
+    publicPath: '/',
+    appShell: '/',
+});
+
 let physicsWorld;
 let rendersWorld;
 
