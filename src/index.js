@@ -112,6 +112,10 @@ function hideHint() {
     document.querySelector('#instructions').style.display = 'none';
 }
 
+function hideHelp() {
+    document.querySelector('#help').style.display = 'none';
+}
+
 function showLevel(mazeDimension) {
     const level = Math.floor((mazeDimension - 1) / 2 - 4);
 
@@ -136,13 +140,15 @@ function documentReady(fn) {
 
 documentReady(function() {
     rendersWorld = new RendersWorld();
-    //
     document.body.appendChild(rendersWorld.getDomElement());
 
     const setKeyAxis = value => (keyAxis = value);
 
     Controls.init(onMoveKey, hideHint, showHint, setKeyAxis, step);
 
+    if('ontouchstart' in document.documentElement) {
+        hideHelp();
+    }
     // gamepad events
     // todo: make it
 
