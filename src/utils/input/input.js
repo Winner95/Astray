@@ -4,7 +4,7 @@ const inputs = new GameInputs();
 
 class Input {
     constructor(keyEvents, mouseEvents, touchEvents) {
-        if('ontouchstart' in document.documentElement) {
+        if ('ontouchstart' in document.documentElement) {
             this.touchInit(touchEvents);
         } else {
             this.keyboardInit(keyEvents);

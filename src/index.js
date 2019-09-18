@@ -146,7 +146,7 @@ documentReady(function() {
 
     Controls.init(onMoveKey, hideHint, showHint, setKeyAxis, step);
 
-    if('ontouchstart' in document.documentElement) {
+    if ('ontouchstart' in document.documentElement) {
         hideHelp();
     }
     // gamepad events
