@@ -1,13 +1,16 @@
 import { WebGLRenderer, Scene, PerspectiveCamera, PointLight, Matrix4, Vector3 } from 'three';
 
+import Intersections from 'renderers/intersections/intersections';
+
 import Ball, { ballRadius } from 'mesh/ball/ball';
 import Plane from 'mesh/ground/ground';
 import Maze from 'mesh/maze/maze';
+import Menu from 'mesh/menu';
 
 const abs = Math.abs;
-
 class RendersWorld {
     constructor() {
+        this.render = this.render.bind(this);
         this.renderer = new WebGLRenderer();
         this.setAspectRatio();
         this.setRenderSize();
@@ -30,12 +33,13 @@ class RendersWorld {
         this.camera.position.set(1, 1, 5);
         this.scene.add(this.camera);
 
-        this.light = new PointLight(0xffffff, 1);
-        this.light.position.set(1, 1, 1.3);
-        this.scene.add(this.light);
+        // new Menu(this.scene);
 
-        this.camera.position.set(1, 1, 5);
-        this.light.position.set(1, 1, 1.3);
+        // this.intersections = new Intersections();
+
+        this.light = new PointLight(0xffffff, 1);
+        this.light.position.set(1, 1, 2.3);
+        this.scene.add(this.light);
 
         this.light.intensity = 0;
     }
@@ -127,6 +131,7 @@ class RendersWorld {
 
     render() {
         this.renderer.render(this.scene, this.camera);
+        // this.intersections.getIntersections(this.scene, this.camera);
     }
 
     setRenderSize() {
