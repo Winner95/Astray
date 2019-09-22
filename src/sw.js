@@ -2,7 +2,7 @@ var CACHE_NAME = 'maze-astray';
 
 var urlsToCache = [
     '/',
-    '/dist/main.js',
+    '/main.js',
     '/textures/brick.jpg',
     '/textures/floor.jpg',
     '/textures/wood.jpg',
