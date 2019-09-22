@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.3
+
+* Google Analytics fixed. Now via env paramaters you can your own values in building env.
+
 ## v0.0.2
 
 * manifest.json added.
