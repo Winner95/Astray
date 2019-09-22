@@ -8,10 +8,6 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const TRACKING_ID = process.env.TRACKING_ID ? process.env.TRACKING_ID : 'your-tracking-app-id';
 const TRACKING_URL = process.env.TRACKING_URL ? process.env.TRACKING_URL : 'your-tracking-app-url';
 
-// for analysis only
-// const { BundleStatsWebpackPlugin } = require('bundle-stats');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -41,10 +37,6 @@ module.exports = {
                 entry: path.resolve(__dirname, 'src/sw.js'),
             }
         }),
-        // new BundleStatsWebpackPlugin(),
-        // new BundleAnalyzerPlugin({
-        //     generateStatsFile: true,
-        // }),
     ],
     resolve: {
         alias: {
