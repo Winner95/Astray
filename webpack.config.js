@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
-const trackingID = process.env.googleID ? process.env.googleID : 'your-tracking-app-ID';
+const TRACKING_ID = process.env.TRACKING_ID ? process.env.TRACKING_ID : 'your-tracking-app-id';
+const TRACKING_URL = process.env.TRACKING_URL ? process.env.TRACKING_URL : 'your-tracking-app-url';
 
 // for analysis only
 // const { BundleStatsWebpackPlugin } = require('bundle-stats');
@@ -28,16 +28,10 @@ module.exports = {
             template: path.resolve(__dirname, 'src/index.ejs'),
             templateParameters: {
                 'title': 'Astray Game',
-                'trackingID': trackingID
+                'TRACKING_ID': TRACKING_ID,
+                'TRACKING_URL': TRACKING_URL
               },
         }),
-        new HtmlReplaceWebpackPlugin([
-            {
-              pattern: 'your-tracking-app-ID',
-              replacement: trackingID
-            },
-
-        ]),
         new ImageminPlugin({
             test: /\.(jpe?g|png|gif|svg)$/i
         }),
