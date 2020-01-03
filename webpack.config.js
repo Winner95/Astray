@@ -23,29 +23,29 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.ejs'),
             templateParameters: {
-                'title': 'Astray Game',
-                'TRACKING_ID': TRACKING_ID,
-                'TRACKING_URL': TRACKING_URL
-              },
+                title: 'Astray Game',
+                TRACKING_ID: TRACKING_ID,
+                TRACKING_URL: TRACKING_URL,
+            },
         }),
         new ImageminPlugin({
-            test: /\.(jpe?g|png|gif|svg)$/i
+            test: /\.(jpe?g|png|gif|svg)$/i,
         }),
         new CompressionPlugin(),
         new OfflinePlugin({
             ServiceWorker: {
                 entry: path.resolve(__dirname, 'src/sw.js'),
-            }
+            },
         }),
     ],
     resolve: {
         alias: {
-            controls: path.resolve(__dirname, "src/controls"),
-            mesh: path.resolve(__dirname, "src/mesh"),
-            physics: path.resolve(__dirname, "src/physics"),
-            renderers: path.resolve(__dirname, "src/renderers"),
-            storage: path.resolve(__dirname, "src/storage"),
-            utils: path.resolve(__dirname, "src/utils"),
-        }
-    }
+            controls: path.resolve(__dirname, 'src/controls'),
+            mesh: path.resolve(__dirname, 'src/mesh'),
+            physics: path.resolve(__dirname, 'src/physics'),
+            renderers: path.resolve(__dirname, 'src/renderers'),
+            storage: path.resolve(__dirname, 'src/storage'),
+            utils: path.resolve(__dirname, 'src/utils'),
+        },
+    },
 };
