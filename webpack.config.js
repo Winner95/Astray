@@ -5,8 +5,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
-const TRACKING_ID = process.env.TRACKING_ID ? process.env.TRACKING_ID : 'your-tracking-app-id';
-const TRACKING_URL = process.env.TRACKING_URL ? process.env.TRACKING_URL : 'your-tracking-app-url';
+const TRACKING_ID = process.env.TRACKING_ID ? process.env.TRACKING_ID : null; // 'your-tracking-app-id';
+const TRACKING_URL = process.env.TRACKING_URL ? process.env.TRACKING_URL : null // 'your-tracking-app-url';
 
 module.exports = {
     entry: './src/index.js',

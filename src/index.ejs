@@ -3,6 +3,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title><%= title %></title>
         <link rel="manifest" href="/manifest.json">
+<% if (TRACKING_URL && TRACKING_ID) { %>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src=<%= TRACKING_URL %></script>></script>
         <script>
@@ -12,7 +13,7 @@
 
             gtag('config', <%= TRACKING_ID %>);
         </script>
-
+<% } %>
         <script src="./main.js"></script>
 
         <style>
