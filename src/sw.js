@@ -1,4 +1,5 @@
 var CACHE_NAME = 'maze-astray';
+var BASE_URL = '/Astray';
 
 var urlsToCache = [
     '/',
@@ -7,7 +8,7 @@ var urlsToCache = [
     '/textures/floor.jpg',
     '/textures/wood.jpg',
     '/manifest.json',
-];
+].map(item => BASE_URL + item);
 
 self.addEventListener('install', event => {
     event.waitUntil(
