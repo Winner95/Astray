@@ -8,11 +8,14 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const TRACKING_ID = process.env.TRACKING_ID ? process.env.TRACKING_ID : null; // 'your-tracking-app-id';
 const TRACKING_URL = process.env.TRACKING_URL ? process.env.TRACKING_URL : null // 'your-tracking-app-url';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: isProduction ? '/Astray/' : '/',
     },
     mode: 'production',
     plugins: [

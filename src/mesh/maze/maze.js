@@ -7,7 +7,7 @@ import {
     MeshPhongMaterial,
 } from 'three';
 
-const brickTexture = new TextureLoader().load('/textures/brick.jpg');
+const brickTexture = new TextureLoader().load('textures/brick.jpg');
 
 brickTexture.minFilter = LinearFilter;
 
