@@ -11,6 +11,8 @@ A remake of WebGL [maze game](https://github.com/wwwtyro/Astray) built with Thre
 
 ### Launching
 
+**Currently setup supports only Node.js version 16 due to webpack compatibility.**
+
 There are several ways to launch the game. Here is the simplest:
 
 1. Clone or download the repository
