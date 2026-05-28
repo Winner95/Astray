@@ -1,6 +1,6 @@
 import { TextureLoader, LinearFilter, SphereGeometry, MeshPhongMaterial, Mesh } from 'three';
 
-const ironTexture = new TextureLoader().load('/textures/wood.jpg');
+const ironTexture = new TextureLoader().load('textures/wood.jpg');
 
 ironTexture.minFilter = LinearFilter;
 

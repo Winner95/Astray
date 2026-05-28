@@ -3,12 +3,12 @@
     "name": "Maze astray",
     "icons": [
       {
-        "src": "/textures/brick.jpg",
+        "src": "textures/brick.jpg",
         "type": "image/jpg",
         "sizes": "600x600"
       }
     ],
-    "start_url": "https://astray-game.herokuapp.com/",
+    "start_url": "https://winner95.github.io/Astray/",
     "background_color": "#000000",
     "display": "standalone",
     "scope": "/",

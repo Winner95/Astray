@@ -7,7 +7,7 @@ import {
     Mesh,
 } from 'three';
 
-const planeTexture = new TextureLoader().load('/textures/floor.jpg');
+const planeTexture = new TextureLoader().load('textures/floor.jpg');
 
 planeTexture.minFilter = LinearFilter;
 planeTexture.wrapS = planeTexture.wrapT = RepeatWrapping;

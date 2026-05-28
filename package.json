@@ -1,7 +1,7 @@
 {
   "name": "astray-master",
   "version": "1.0.0",
-  "description": "A WebGL maze game built with Three.js and Box2dWeb. Play it here: http://wwwtyro.github.com/Astray/",
+  "description": "A WebGL maze game built with Three.js and Box2dWeb.",
   "main": "dist/index.html",
   "engines": {
     "node": ">=16 <17"
