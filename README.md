@@ -19,8 +19,8 @@ There are several ways to launch the game. Here is the simplest:
 2. Navigate to Astray's directory
 3. Run 'yarn'
 4. Run 'yarn watch'
-5. Run 'yarn start'
-6. Open 'localhost:8000' in your browser
+5. Run 'PORT=3001 yarn start'
+6. Open 'localhost:3001' in your browser
 7. Enjoy!
 
 ### License
